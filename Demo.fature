@@ -1,0 +1,86 @@
+@lrqa @demo
+Feature: verify the lrqa website scenarios
+
+  @homePageVideo
+  Scenario: verify video actions youtube video front end
+   Given I navigate to lrqa website
+    Then I should be on page "lrqa.com/en-gb/"
+    And  I click on button "Accept All Cookies"
+    And  I should see text "Welcome to LRQA,"
+    And  I should see text "the leading global assurance partner"
+    When I click on button "Solutions"
+    And  I click on link "Assure Assets and Management Systems"
+    Then I should see the url contains "assure-assets-and-management-systems/"
+    When I scroll down to element "YouTube video player"
+    Then I should see YouTube video player is visible
+    And  I verify the video is playing
+
+  @officeFinder
+  Scenario: verify office finder block  behaviour front end
+   Given I navigate to lrqa website
+    Then I should be on page "lrqa.com/en-gb/"
+    And  I click on button "Accept All Cookies"
+    And  I should see text "Welcome to LRQA,"
+    And  I should see text "the leading global assurance partner"
+    And  I click on header link "Contact Us"
+    Then I should see the url contains "contact-us"
+    When I scroll down to element contains text "Tell us your location to find local contact information"
+    When I enter "United Kingdom" for input name "search"
+    And  I click on finder button "Search"
+    Then I should see text "3 Office address(es)" 
+    When I click on search results text "3 Office address(es)"
+    Then I should see text "Birmingham"
+    Then I should see text "London"
+    Then I should see text "Edinburgh (Retail & Hospitality and Seafood)"
+    When I click on search results text "Phone number(s)"
+    Then I should see text "Sales, Client services and Operations support"
+    Then I should see text "Inspection Services & Utilities"
+    Then I should see text "Cyber Security"
+    Then I should see text "Retail & Hospitality and Seafood"
+    When I click on view map for location "Birmingham" 
+    Then I should see the url contains "google.com/maps"
+    
+  @bookOnlineTraining
+  Scenario: verify user can book online training front end
+   Given I navigate to lrqa website
+    Then I should be on page "lrqa.com/en-gb/"
+    And  I click on button "Accept All Cookies"
+    And  I should see text "Welcome to LRQA,"
+    And  I should see text "the leading global assurance partner"
+    When I click on button "Services"
+    And  I click on button "Training"
+    And  I click on button "Online Training"
+    Then I click on link "eLearning"
+    And  I enter "ISO 9001" search input 
+    When I click on learning finder button "Search"
+    Then I click on first link "View details and book"
+    And  I click on first link "Book Now"
+    When I switch tab
+    Then I should see the url contains "training-portal.lrqa.com"
+
+    @bookTrainingFromSearch
+  Scenario: verify user can book training from search front end
+   Given I navigate to lrqa website
+    Then I should be on page "lrqa.com/en-gb/"
+    And  I click on button "Accept All Cookies"
+    And  I should see text "Welcome to LRQA,"
+    And  I should see text "the leading global assurance partner"
+    When I click on page header search button
+    And  I enter "FSSC 22000" search input and press enter key
+    Then I click on first link "View details and book"
+    And  I click on first link "Book Now"
+    When I switch tab
+    Then I should see the url contains "training-portal.lrqa.com"
+    
+    
+  @eiqHomePage
+  Scenario: verify media download EIQ site front end
+   Given I navigate to eiq website
+    Then I should be on page "eiq.com"
+    And  I click on button "Accept All Cookies"
+    And  I scroll down to footer element contains text "Training"
+    When I click on footer link contains text "Training"
+    Then I should see the url contains "eiq.com/training"
+    And  I scroll down to element contains text "Download our LRQA Digital Learning fact sheet"
+    When I click on link "Download now"
+    Then I should see the url contains "assets.lrqa.com/m/6331f3b537244508/original/EiQ-Digital-Learning-Data-Sheet-Global-2024.pdf"
